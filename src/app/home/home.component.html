@@ -1,0 +1,33 @@
+<div class="text-center container col-1" style="padding-top: 25%;" *ngIf="cargando === true">
+  <app-loading ></app-loading>
+</div>
+<div *ngIf="cargando === false">
+  <div class="text-center" style="padding-top: 2%; padding-bottom: 2%;">
+    <home-filtro (parametros)="ordenar($event)" (orden)="ordenarAsc($event)" (cond)="getCondicion($event)"
+      (monto)="getMonto($event)"></home-filtro>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="container-fluid col animate bounceInUp" *ngFor="let item of lista">
+        <div class="card" style="width: 12rem;">
+          <img [src]="item.thumbnail" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.title }}</h5>
+            <h6 class="card-text">Precio: {{item.price | currency }} </h6>
+            <h6>Cant Disponible: {{item.available_quantity}}</h6>
+            <h6>Cant Vendidos: {{item.sold_quantity}}</h6>
+            <h6>id: {{item.listing_type_id}}</h6>
+            <h6>Condicion: {{item.condition}}</h6>
+            <a href="#" class="btn btn-primary" (click)="mostrarModal(item.id)">Ir a Publicación</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="col-lg-8 col-md-10 ml-auto mr-auto">
+    <div class="float-right">
+      <paginador (changePage)="cargarLista($event)"></paginador>
+    </div>
+  </div>
+

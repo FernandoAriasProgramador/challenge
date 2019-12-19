@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+    <button type="button" class="btn btn-secondary" [ngClass]="{'active': price}"
+      (click)="price = !price; emitir()">Precio</button>
+    <button type="button" class="btn btn-secondary" [ngClass]="{'active': sold_quantity}"
+      (click)="sold_quantity = !sold_quantity; emitir()">Cantidad Vendida</button>
+
+    <button type="button" class="btn btn-secondary" [ngClass]="{'active': asc}"
+      (click)="ascMetodo()">{{ascTexto}}</button>
+
+    <div class="btn-group" role="group">
+      <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Condición
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <a class="dropdown-item" href="#" (click)="condicion = 'new'; emitCond()">Nuevo</a>
+        <a class="dropdown-item" href="#" (click)="condicion = 'used'; emitCond()">Usado</a>
+      </div>
+    </div>
+    <div class="btn-group" role="group">
+      <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Rango de Precios
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <div class="container" (focusout)="montos()">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text" id="btnGroupAddon">Min</div>
+            </div>
+            <input type="text" class="form-control" placeholder="0.0" [(ngModel)]='min'>
+          </div>
+          <br>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text" id="btnGroupAddon">Max</div>
+            </div>
+            <input type="text" class="form-control" placeholder="0.0" [(ngModel)]='max'>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
